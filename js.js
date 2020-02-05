@@ -40,79 +40,60 @@ function drawChess(){
       } 
             mainBlock.appendChild(block);
             
-            if ((i == 1 && j % 2 !== i % 2) || (i == 6 && j % 2 !== i % 2)) {
+            function addSpawn (f){
                 spawnIcon = document.createElement('i');
-                spawnIcon.className = 'fas fa-chess-pawn fa-2x spawnBlack'; 
+                spawnIcon.className = f;
                 block.appendChild(spawnIcon);
             }
-             if ((i == 1 && j % 2 == i % 2) || (i == 6 && j % 2 == i % 2)) {
-                spawnIcon = document.createElement('i');
-                spawnIcon.className = 'fas fa-chess-pawn fa-2x spawnWhite';
-                block.appendChild(spawnIcon);
+            
+            if (i == 1) {
+                addSpawn ('fas fa-chess-pawn fa-2x spawnBlack');
             }
-            if ((i == 0 && j == 0) || (i == 7 && j == 7)) {
-                spawnIcon = document.createElement('i');
-                spawnIcon.className = 'fas fa-chess-rook fa-2x spawnWhite'; 
-                block.appendChild(spawnIcon);
+             if (i == 6) {
+                addSpawn ('fas fa-chess-pawn fa-2x spawnWhite');
+            }
+            if ((i == 0 && j == 0) || (i == 0 && j == 7)) {
+                addSpawn ('fas fa-chess-rook fa-2x spawnBlack');
                 }
-            if ((i == 0 && j == 7) || (i == 7 && j == 0)) {
-                spawnIcon = document.createElement('i');
-                spawnIcon.className = 'fas fa-chess-rook fa-2x spawnBlack'; 
-                block.appendChild(spawnIcon);
+            if ((i == 7 && j == 7) || (i == 7 && j == 0)) {
+                addSpawn ('fas fa-chess-rook fa-2x spawnWhite');
                 }
-            if ((i == 0 && j == 6) || (i == 7 && j == 1)) {
-                spawnIcon = document.createElement('i');
-                spawnIcon.className = 'fas fa-chess-knight fa-2x spawnWhite'; 
-                block.appendChild(spawnIcon);
+            if ((i == 7 && j == 6) || (i == 7 && j == 1)) {
+                addSpawn ('fas fa-chess-knight fa-2x spawnWhite');
                 }
-            if ((i == 0 && j == 1) || (i == 7 && j == 6)) {
-                spawnIcon = document.createElement('i');
-                spawnIcon.className = 'fas fa-chess-knight fa-2x spawnBlack'; 
-                block.appendChild(spawnIcon);
+            if ((i == 0 && j == 1) || (i == 0 && j == 6)) {
+                addSpawn ('fas fa-chess-knight fa-2x spawnBlack');
                 }
-            if ((i == 0 && j == 2) || (i == 7 && j == 5)) {
-                spawnIcon = document.createElement('i');
-                spawnIcon.className = 'fas fa-chess-bishop fa-2x spawnWhite'; 
-                block.appendChild(spawnIcon);
+            if ((i == 7 && j == 2) || (i == 7 && j == 5)) {
+                addSpawn ('fas fa-chess-bishop fa-2x spawnWhite');
                 }
-            if ((i == 0 && j == 5) || (i == 7 && j == 2)) {
-                spawnIcon = document.createElement('i');
-                spawnIcon.className = 'fas fa-chess-bishop fa-2x spawnBlack'; 
-                block.appendChild(spawnIcon);
+            if ((i == 0 && j == 5) || (i == 0 && j == 2)) {
+                addSpawn ('fas fa-chess-bishop fa-2x spawnBlack');
                 }
             if (i == 7 && j == 3) {
-                spawnIcon = document.createElement('i');
-                spawnIcon.className = 'fas fa-chess-queen fa-2x spawnWhite queen'; 
-                block.appendChild(spawnIcon);
+                addSpawn ('fas fa-chess-queen fa-2x spawnWhite queen');
                 }
             if (i == 0 && j == 3) {
-                spawnIcon = document.createElement('i');
-                spawnIcon.className = 'fas fa-chess-queen fa-2x spawnBlack queen'; 
-                block.appendChild(spawnIcon);
+                addSpawn ('fas fa-chess-queen fa-2x spawnBlack queen');
                 }
-             if (i == 0 && j == 4) {
-                spawnIcon = document.createElement('i');
-                spawnIcon.className = 'fas fa-chess-king fa-2x spawnWhite king'; 
-                block.appendChild(spawnIcon);
+             if (i == 7 && j == 4) {
+                addSpawn ('fas fa-chess-king fa-2x spawnWhite king');
                 }
-            if (i == 7 && j == 4) {
-                spawnIcon = document.createElement('i');
-                spawnIcon.className = 'fas fa-chess-king fa-2x spawnBlack king'; 
-                block.appendChild(spawnIcon);
+            if (i == 0 && j == 4) {
+                addSpawn ('fas fa-chess-king fa-2x spawnBlack king');
                 }
-        }
+        } 
     }
-      for (let i = 0; i < document.getElementsByClassName("black").length; i++) {
-        document.getElementsByClassName("black")[i].style.backgroundColor = "black";
-      }
-      for (i = 0; i < document.getElementsByClassName("white").length; i++) {
-        document.getElementsByClassName("white")[i].style.backgroundColor = "white";
-      }
+      
       for (i = 0; i < document.getElementsByClassName("block").length; i++) {
-        document.getElementsByClassName("block")[i].style.width = "50px";
-        document.getElementsByClassName("block")[i].style.height = "50px";
-        document.getElementsByClassName("block")[i].style.float = "left";
+          s = document.getElementsByClassName("block")[i];
+        s.style.width = "50px";
+        s.style.height = "50px";
+        s.style.float = "left";
+        s.style.cursor = "pointer";
+       s.addEventListener("click", function(){this.classList.toggle("green");});
       }
+    
         appendLetters(bb); 
         appendLetters(ba);
         appendFigures(hl);
